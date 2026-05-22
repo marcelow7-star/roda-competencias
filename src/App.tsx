@@ -120,7 +120,7 @@ const enviarDados = async () => {
     }),
   });
 
-  setTela("relatorio");
+  setTela("obrigado");
 };
     return (
       <div className="app">
