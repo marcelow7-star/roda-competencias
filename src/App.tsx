@@ -237,6 +237,19 @@ O padrão apresentado no radar indica oportunidades claras de desenvolvimento es
               <strong>Leitura do perfil</strong>
               <p>{leituraPerfil()}</p>
             </div>
+            <div className="text-block">
+  <strong>Pontos fortes</strong>
+  <p>
+    {[...dados]
+      .sort((a, b) => b.nota - a.nota)
+      .slice(0, 3)
+      .map((c) => c.competencia)
+      .join(", ")}
+  </p>
+
+  <strong>Pontos de atenção</strong>
+  <p>{menoresCompetencias.map((c) => c.competencia).join(", ")}</p>
+</div>
 
             <div className="chart">
               <ResponsiveContainer width="100%" height={300}>
