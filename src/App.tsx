@@ -48,6 +48,7 @@ export default function App() {
   const [notas, setNotas] = useState<Record<string, number>>(
     Object.fromEntries(competencias.map((c) => [c, 5]))
   );
+
   const dados = useMemo(
     () =>
       competencias.map((c) => ({
@@ -151,44 +152,10 @@ export default function App() {
   }
 
   if (tela === "relatorio") {
-    const sugestoesPorPerfil = {
-      CEO: {
-        Comunicação:
-          "Aprimorar comunicação estratégica com foco em clareza e direcionamento organizacional",
-        Liderança:
-          "Fortalecer liderança orientada a resultados e desenvolvimento de lideranças intermediárias",
-        "Visão estratégica":
-          "Aprofundar análise de cenários e decisões de longo prazo",
-      },
-
-      Gerente: {
-        Comunicação:
-          "Melhorar clareza na comunicação com o time e alinhamento de expectativas",
-        Liderança:
-          "Desenvolver liderança próxima e acompanhamento contínuo da equipe",
-        "Gestão do tempo":
-          "Organizar rotina com foco em prioridades operacionais",
-      },
-
-      Conselheiro: {
-        "Tomada de decisão":
-          "Refinar critérios de decisão com base em governança e impacto estratégico",
-        "Pensamento crítico": "Aprofundar análise crítica de cenários e riscos",
-        "Visão estratégica":
-          "Ampliar visão de longo prazo e sustentabilidade do negócio",
-      },
-
-      Empreendedor: {
-        "Tomada de decisão":
-          "Aumentar velocidade e qualidade nas decisões sob incerteza",
-        Criatividade: "Estimular geração constante de soluções e oportunidades",
-        Adaptabilidade:
-          "Desenvolver capacidade de resposta rápida a mudanças de mercado",
-      },
-    };
     const conclusaoExecutiva = () => {
       return "Este relatório apresenta uma leitura consolidada das competências avaliadas, destacando pontos fortes, oportunidades de desenvolvimento e prioridades para evolução profissional.";
     };
+
     const classificacaoPerfil = () => {
       const media =
         dados.reduce((soma, item) => soma + item.nota, 0) / dados.length;
@@ -198,6 +165,7 @@ export default function App() {
       if (media >= 5) return "Perfil em Desenvolvimento";
       return "Perfil com Prioridades Críticas";
     };
+
     const leituraPerfil = () => {
       const baixas = menoresCompetencias.map((c) => c.competencia);
 
@@ -213,12 +181,12 @@ export default function App() {
         return `Considerando o papel de ${
           perfil || "liderança avaliada"
         }, o radar demonstra um nível elevado e consistente nas competências avaliadas.
-    
-    Destacam-se especialmente competências como ${altas.join(
-      ", "
-    )}, que podem ser utilizadas como alavancas estratégicas na atuação profissional.
-    
-    O momento atual sugere foco na manutenção desse padrão de excelência, bem como na ampliação de impacto dessas competências em contextos mais complexos.`;
+
+Destacam-se especialmente competências como ${altas.join(
+          ", "
+        )}, que podem ser utilizadas como alavancas estratégicas na atuação profissional.
+
+O momento atual sugere foco na manutenção desse padrão de excelência, bem como na ampliação de impacto dessas competências em contextos mais complexos.`;
       }
 
       return `Considerando o papel de ${
@@ -226,13 +194,14 @@ export default function App() {
       }, observa-se que competências como ${baixas.join(
         ", "
       )} demandam maior atenção no momento.
-    
-    Por outro lado, competências como ${altas.join(
-      ", "
-    )} se destacam como pontos de força, podendo ser alavancas importantes na atuação profissional.
-    
-    O padrão apresentado no radar indica oportunidades claras de desenvolvimento estruturado.`;
+
+Por outro lado, competências como ${altas.join(
+        ", "
+      )} se destacam como pontos de força, podendo ser alavancas importantes na atuação profissional.
+
+O padrão apresentado no radar indica oportunidades claras de desenvolvimento estruturado.`;
     };
+
     return (
       <div className="app">
         <section className="page white">
@@ -242,6 +211,10 @@ export default function App() {
           <h1>Diagnóstico de Competências</h1>
           <div className="blue-line" />
 
+          <div className="text-block">
+            <strong>{classificacaoPerfil()}</strong>
+          </div>
+
           <div className="diagnostic">
             <div className="text-block">
               <strong>Leitura do perfil</strong>
@@ -249,10 +222,10 @@ export default function App() {
             </div>
 
             <div className="chart">
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="100%" height={300}>
                 <RadarChart data={dados}>
-              <PolarGrid />
-<PolarRadiusAxis domain={[0, 10]} />
+                  <PolarGrid />
+                  <PolarRadiusAxis domain={[0, 10]} />
                   <Radar
                     dataKey="nota"
                     stroke="#4aa3ff"
@@ -261,6 +234,14 @@ export default function App() {
                   />
                 </RadarChart>
               </ResponsiveContainer>
+
+              <ul className="legenda">
+                {dados.map((item, i) => (
+                  <li key={i}>
+                    <strong>{item.competencia}</strong>: {item.nota}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
@@ -331,80 +312,5 @@ export default function App() {
     );
   }
 
-  return (
-    <div className="app">
-      <section className="cover">
-        <div className="cover-border">
-          <div>
-            <Kicker>Diagnóstico de competências</Kicker>
-            <Kicker>Relatório personalizado · Plano de desenvolvimento</Kicker>
-            <h1>
-              Relatório + <span>Plano de Ação</span>
-            </h1>
-            <p>
-              Diagnóstico individual e análise estruturada para desenvolvimento
-              de competências.
-            </p>
-            <blockquote>
-              “Desenvolvimento não é sobre melhorar tudo. É sobre escolher onde
-              é preciso ser realmente forte.”
-            </blockquote>
-          </div>
-
-          <div className="cover-grid">
-            <div>
-              <Kicker>Participante</Kicker>
-              <strong>{nome || "Não informado"}</strong>
-            </div>
-            <div>
-              <Kicker>Data</Kicker>
-              <strong>{new Date().toLocaleDateString("pt-BR")}</strong>
-            </div>
-            <div>
-              <Kicker>Nota geral</Kicker>
-              <strong>-</strong>
-            </div>
-            <div>
-              <Kicker>Base diagnóstica</Kicker>
-              <strong>Roda das Competências</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="page white">
-        <Header section="Diagnóstico" />
-        <Kicker>Ponto de partida</Kicker>
-        <h1>Diagnóstico Aprofundado</h1>
-        <div className="blue-line" />
-
-        <div className="diagnostic">
-          <div>
-            <Kicker>Nota geral</Kicker>
-            <div className="score">
-              -<small>/10</small>
-            </div>
-          </div>
-
-          <div className="chart">
-            <ResponsiveContainer width="100%" height={300}>
-              <RadarChart data={dados}>
-                <PolarGrid />
-                <PolarRadiusAxis domain={[0, 10]} />
-                <Radar
-                  dataKey="nota"
-                  stroke="#4aa3ff"
-                  fill="#4aa3ff"
-                  fillOpacity={0.25}
-                />
-              </RadarChart>
-              </ResponsiveContainer>
-            
-               <ul className="legenda">
-    {dados.map((item, i) => (
-      <li key={i}>
-        <strong>{item.competencia}</strong>: {item.nota}
-      </li>
-    ))}
-  </ul>
-</div>
+  return null;
+}
