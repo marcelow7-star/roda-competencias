@@ -4,7 +4,6 @@ import {
   RadarChart,
   PolarGrid,
   PolarRadiusAxis,
-  PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
 import "./styles.css";
