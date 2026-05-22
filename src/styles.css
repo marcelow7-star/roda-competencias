@@ -197,10 +197,9 @@ textarea {
 }
 
 .chart {
-  height: 400px;
   width: 100%;
   max-width: 720px;
-  margin: 0 auto;
+  margin: 0 auto 32px;
 }
 
 .status {
