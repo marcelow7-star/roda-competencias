@@ -305,3 +305,15 @@ input[type="range"] {
   border-radius: 4px;
   outline: none;
 }
+.legenda {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+
+.legenda li {
+  font-size: 13px;
+}
