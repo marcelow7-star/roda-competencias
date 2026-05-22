@@ -179,6 +179,30 @@ const enviarDados = async () => {
     );
   }
 
+  if (tela === "obrigado") {
+  return (
+    <div className="app">
+      <section className="page white">
+        <Header section="Enviado" />
+        <Kicker>Diagnóstico recebido</Kicker>
+
+        <h1>Obrigado!</h1>
+        <div className="blue-line" />
+
+        <div className="text-block">
+          <p>
+            Seu diagnóstico foi enviado com sucesso. Em breve entraremos em
+            contato.
+          </p>
+        </div>
+
+        <button className="primary" onClick={() => setTela("inicio")}>
+          Voltar ao início
+        </button>
+      </section>
+    </div>
+  );
+}
   if (tela === "relatorio") {
     const conclusaoExecutiva = () => {
       return "Este relatório apresenta uma leitura consolidada das competências avaliadas, destacando pontos fortes, oportunidades de desenvolvimento e prioridades para evolução profissional.";
