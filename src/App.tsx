@@ -249,14 +249,10 @@ export default function App() {
             </div>
 
             <div className="chart">
-              <ResponsiveContainer width="100%" height="100%">
-                <RadarChart
-                  data={dados}
-                  margin={{ top: 40, right: 60, bottom: 40, left: 60 }}
-                >
-                  <PolarGrid />
-
-                  <PolarRadiusAxis domain={[0, 10]} />
+              <ResponsiveContainer width="100%" height={320}>
+                <RadarChart data={dados}
+              <PolarGrid />
+<PolarRadiusAxis domain={[0, 10]} />
                   <Radar
                     dataKey="nota"
                     stroke="#4aa3ff"
