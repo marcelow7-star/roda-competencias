@@ -3,7 +3,6 @@ import {
   Radar,
   RadarChart,
   PolarGrid,
-  PolarAngleAxis,
   PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
@@ -256,10 +255,7 @@ export default function App() {
                   margin={{ top: 40, right: 60, bottom: 40, left: 60 }}
                 >
                   <PolarGrid />
-                  <PolarAngleAxis
-                    dataKey="competenciaRadar"
-                    tick={{ fontSize: 10 }}
-                  />
+
                   <PolarRadiusAxis domain={[0, 10]} />
                   <Radar
                     dataKey="nota"
@@ -370,7 +366,7 @@ export default function App() {
             </div>
             <div>
               <Kicker>Nota geral</Kicker>
-              <strong>{media.toFixed(1)}/10</strong>
+              <strong>-</strong>
             </div>
             <div>
               <Kicker>Base diagnóstica</Kicker>
@@ -390,8 +386,7 @@ export default function App() {
           <div>
             <Kicker>Nota geral</Kicker>
             <div className="score">
-              {media.toFixed(1)}
-              <small>/10</small>
+              -<small>/10</small>
             </div>
           </div>
 
@@ -399,7 +394,6 @@ export default function App() {
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={dados}>
                 <PolarGrid />
-                <PolarAngleAxis dataKey="competencia" tick={{ fontSize: 12 }} />
                 <PolarRadiusAxis domain={[0, 10]} />
                 <Radar
                   dataKey="nota"
