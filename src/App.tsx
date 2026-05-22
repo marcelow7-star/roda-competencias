@@ -402,7 +402,14 @@ export default function App() {
                   fillOpacity={0.25}
                 />
               </RadarChart>
-            </ResponsiveContainer>
+              </ResponsiveContainer>
+              <ul className="legenda">
+  {dados.map((item, i) => (
+    <li key={i}>
+      <strong>{item.competencia}</strong>: {item.nota}
+    </li>
+  ))}
+</ul>
           </div>
         </div>
       </section>
