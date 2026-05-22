@@ -224,6 +224,9 @@ O padrão apresentado no radar indica oportunidades claras de desenvolvimento es
 
           <h1>Diagnóstico de Competências</h1>
           <div className="blue-line" />
+          <div className="text-block">
+  <strong>{classificacaoPerfil()}</strong>
+</div>
 
           <div className="text-block">
             <strong>{classificacaoPerfil()}</strong>
