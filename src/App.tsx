@@ -94,21 +94,33 @@ export default function App() {
   }
 
   if (tela === "resposta") {
-    const enviarDados = async () => {
-    await fetch("https://formspree.io/f/xjgzrwky", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nome,
-        perfil,
-        respostas_formatadas: dados
-  .map((item) => `${item.competencia}: ${item.nota}`)
-  .join("\n"),
-      }),
-    });
-      alert("Diagnóstico enviado com sucesso!");
+const enviarDados = async () => {
+  await fetch("https://formspree.io/f/xjgzrwky", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nome,
+      perfil,
+
+      pontos_fortes: [...dados]
+        .sort((a, b) => b.nota - a.nota)
+        .slice(0, 3)
+        .map((c) => c.competencia)
+        .join(", "),
+
+      pontos_de_atencao: menoresCompetencias
+        .map((c) => c.competencia)
+        .join(", "),
+
+      respostas_formatadas: dados
+        .map((item) => `${item.competencia}: ${item.nota}`)
+        .join("\n"),
+    }),
+  });
+
+  setTela("relatorio");
 };
     return (
       <div className="app">
