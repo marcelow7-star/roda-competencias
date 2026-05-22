@@ -391,7 +391,7 @@ export default function App() {
           </div>
 
           <div className="chart">
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height={300}>
               <RadarChart data={dados}>
                 <PolarGrid />
                 <PolarRadiusAxis domain={[0, 10]} />
@@ -403,6 +403,7 @@ export default function App() {
                 />
               </RadarChart>
               </ResponsiveContainer>
+            
               <ul className="legenda">
   {dados.map((item, i) => (
     <li key={i}>
