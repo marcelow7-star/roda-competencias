@@ -250,7 +250,7 @@ export default function App() {
 
             <div className="chart">
               <ResponsiveContainer width="100%" height="100%">
-                <RadarChart data={dados}
+                <RadarChart data={dados}>
               <PolarGrid />
 <PolarRadiusAxis domain={[0, 10]} />
                   <Radar
