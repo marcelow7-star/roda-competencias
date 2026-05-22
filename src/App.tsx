@@ -94,6 +94,23 @@ export default function App() {
   }
 
   if (tela === "resposta") {
+    const enviarDados = async () => {
+    await fetch("https://formspree.io/f/xjgzrwky", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome,
+        perfil,
+        respostas: dados,
+      }),
+    });
+      alert("Diagnóstico enviado com sucesso!");
+};
+
+    alert("Diagnóstico enviado com sucesso!");
+  };
     return (
       <div className="app">
         <section className="page white">
@@ -143,8 +160,8 @@ export default function App() {
             </div>
           ))}
 
-          <button className="primary" onClick={() => setTela("relatorio")}>
-            Gerar relatório
+          <button className="primary" onClick={enviarDados}>
+            Finalizar diagnóstico
           </button>
         </section>
       </div>
