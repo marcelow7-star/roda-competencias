@@ -400,16 +400,11 @@ export default function App() {
               </RadarChart>
               </ResponsiveContainer>
             
-              <ul className="legenda">
-  {dados.map((item, i) => (
-    <li key={i}>
-      <strong>{item.competencia}</strong>: {item.nota}
-    </li>
-  ))}
-</ul>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+               <ul className="legenda">
+    {dados.map((item, i) => (
+      <li key={i}>
+        <strong>{item.competencia}</strong>: {item.nota}
+      </li>
+    ))}
+  </ul>
+</div>
