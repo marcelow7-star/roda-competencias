@@ -103,7 +103,9 @@ export default function App() {
       body: JSON.stringify({
         nome,
         perfil,
-        respostas: dados,
+        respostas_formatadas: dados
+  .map((item) => `${item.competencia}: ${item.nota}`)
+  .join("\n"),
       }),
     });
       alert("Diagnóstico enviado com sucesso!");
