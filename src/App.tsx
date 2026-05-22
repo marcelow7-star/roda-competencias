@@ -394,7 +394,6 @@ export default function App() {
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={dados}>
                 <PolarGrid />
-                <PolarAngleAxis dataKey="competenciaRadar" />
                 <PolarRadiusAxis domain={[0, 10]} />
                 <Radar
                   dataKey="nota"
