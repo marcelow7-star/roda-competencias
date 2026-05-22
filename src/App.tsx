@@ -262,7 +262,7 @@ export default function App() {
                 </RadarChart>
               </ResponsiveContainer>
             </div>
-          </div> //
+          </div>
 
           <div className="plano-acao">
             <h2>Plano de Ação Prioritário</h2>
