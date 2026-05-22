@@ -40,8 +40,9 @@ function Header({ section }: { section: string }) {
 }
 
 export default function App() {
-  const [tela, setTela] = useState<"inicio" | "resposta" | "relatorio">(
-    "inicio"
+  const [tela, setTela] = useState<
+  "inicio" | "resposta" | "relatorio" | "obrigado"
+>("inicio");
   );
   const [nome, setNome] = useState("");
   const [perfil, setPerfil] = useState("");
