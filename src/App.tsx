@@ -108,9 +108,6 @@ export default function App() {
     });
       alert("Diagnóstico enviado com sucesso!");
 };
-
-    alert("Diagnóstico enviado com sucesso!");
-  };
     return (
       <div className="app">
         <section className="page white">
